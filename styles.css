@@ -1081,80 +1081,124 @@ ul {
     font-weight: 600;
 }
 
-/* === Partners Section === */
-.partners-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 48px;
+/* === Partners Section — Integrated, no boxes === */
+.section-partners {
+    background: var(--light-gray);
+    position: relative;
+    overflow: hidden;
 }
 
-.partner-category {
-    text-align: center;
+.section-partners::before,
+.section-partners::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(22, 64, 104, 0.3), transparent);
 }
 
-.partner-category h3 {
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 24px;
-}
+.section-partners::before { top: 40px; }
+.section-partners::after  { bottom: 40px; }
 
-.partner-logos {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    flex-wrap: wrap;
-    align-items: stretch;
-}
-
-.partner-logo {
-    padding: 24px 32px;
-    background: var(--white);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--medium-gray);
-    transition: var(--transition);
+.partners-stage {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 72px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.partners-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+    width: 100%;
+}
+
+.partners-label {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    max-width: 520px;
+}
+
+.label-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(22, 64, 104, 0.35), transparent);
+}
+
+.label-text {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--navy);
+    white-space: nowrap;
+}
+
+.partners-logos {
+    display: flex;
+    align-items: center;
     justify-content: center;
-    min-height: 160px;
-    min-width: 240px;
-    gap: 4px;
+    gap: 80px;
+    flex-wrap: wrap;
 }
 
-.partner-logo:hover {
+.partner-brand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(0.15);
+    opacity: 0.88;
+    position: relative;
+}
+
+.partner-brand:hover {
+    filter: grayscale(0);
+    opacity: 1;
     transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--navy);
 }
 
-.partner-img {
-    max-width: 260px;
-    max-height: 110px;
+.partner-brand-img {
+    max-width: 220px;
+    max-height: 70px;
     width: auto;
     height: auto;
     object-fit: contain;
     display: block;
+    /* Fonde il bianco dei PNG con lo sfondo della sezione */
+    mix-blend-mode: multiply;
 }
 
-.partner-img-wide {
-    max-width: 320px;
-    max-height: 120px;
+.partner-brand-img-lg {
+    max-width: 300px;
+    max-height: 90px;
+}
+
+/* Thin vertical separator between Revilaw and Advant */
+.partner-sep {
+    width: 1px;
+    height: 56px;
+    background: linear-gradient(to bottom, transparent, rgba(22, 64, 104, 0.25), transparent);
+    flex-shrink: 0;
 }
 
 .partner-fallback {
     font-family: var(--font-display);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 800;
     color: var(--navy);
     letter-spacing: 1px;
     text-align: center;
-}
-
-.partner-logo-unindustria {
-    min-width: 340px;
 }
 
 /* === Footer === */
@@ -1276,9 +1320,12 @@ ul {
         height: 300px;
     }
 
-    .partners-grid {
-        grid-template-columns: 1fr;
-        gap: 36px;
+    .partners-logos {
+        gap: 48px;
+    }
+
+    .partners-stage {
+        gap: 56px;
     }
 
     .footer-grid {
@@ -1418,6 +1465,40 @@ ul {
         flex-direction: column;
         gap: 6px;
         text-align: center;
+    }
+
+    .partners-stage {
+        gap: 48px;
+    }
+
+    .partners-row {
+        gap: 28px;
+    }
+
+    .partners-logos {
+        flex-direction: column;
+        gap: 36px;
+    }
+
+    .partner-sep {
+        width: 56px;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(22, 64, 104, 0.25), transparent);
+    }
+
+    .partner-brand-img {
+        max-width: 180px;
+        max-height: 60px;
+    }
+
+    .partner-brand-img-lg {
+        max-width: 260px;
+        max-height: 80px;
+    }
+
+    .label-text {
+        font-size: 0.65rem;
+        letter-spacing: 2.5px;
     }
 }
 
