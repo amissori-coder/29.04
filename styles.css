@@ -1339,6 +1339,54 @@ ul {
 }
 
 @media (max-width: 768px) {
+    /* --- Globals --- */
+    html {
+        font-size: 15px;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .section {
+        padding: 64px 0;
+    }
+
+    .section-header {
+        margin-bottom: 44px;
+    }
+
+    .section-tag {
+        font-size: 0.7rem;
+        letter-spacing: 2.5px;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .section-description {
+        font-size: 0.95rem;
+    }
+
+    /* --- Navbar --- */
+    .navbar {
+        padding: 14px 0;
+    }
+
+    .navbar.scrolled {
+        padding: 10px 0;
+    }
+
+    .logo-mark-img {
+        height: 32px;
+    }
+
+    .logo-text {
+        font-size: 0.68rem;
+        letter-spacing: 1.2px;
+    }
+
     .nav-toggle {
         display: flex;
     }
@@ -1347,77 +1395,198 @@ ul {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 280px;
+        width: 78%;
+        max-width: 320px;
         height: 100vh;
+        height: 100dvh;
         background: var(--navy-dark);
         flex-direction: column;
-        padding: 100px 28px 28px;
-        gap: 20px;
+        padding: 88px 28px 28px;
+        gap: 18px;
         transition: right 0.4s ease;
         box-shadow: -8px 0 32px rgba(0, 0, 0, 0.4);
+        overflow-y: auto;
     }
 
     .nav-menu.active {
         right: 0;
     }
 
+    .nav-menu li {
+        width: 100%;
+    }
+
     .nav-menu a {
         font-size: 1rem;
+        display: block;
+        padding: 10px 0;
     }
 
     .nav-cta {
         text-align: center;
         width: 100%;
+        padding: 14px 22px;
+        margin-top: 8px;
+    }
+
+    /* --- Hero --- */
+    .hero {
+        min-height: auto;
+        min-height: 100dvh;
     }
 
     .hero-content {
-        padding: 100px 0 60px;
+        padding: 92px 0 56px;
+    }
+
+    .hero-badge {
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        padding: 7px 16px;
+        margin-bottom: 26px;
+    }
+
+    .hero-title {
+        margin-bottom: 20px;
+    }
+
+    .hero-title-line {
+        font-size: 3.2rem;
+        line-height: 1;
+    }
+
+    .hero-title-line.accent::after {
+        width: 60px;
+        height: 2.5px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.05rem;
+        margin-bottom: 32px;
+        padding: 0 8px;
     }
 
     .hero-info {
         flex-direction: column;
         align-items: center;
-        gap: 14px;
+        gap: 12px;
+        margin-bottom: 36px;
+    }
+
+    .hero-info-item {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    .countdown {
+        gap: 6px;
+        margin-bottom: 36px;
     }
 
     .countdown-item {
-        min-width: 64px;
-        padding: 12px 14px;
+        min-width: 62px;
+        padding: 12px 10px;
+        border-radius: 8px;
     }
 
     .countdown-value {
         font-size: 1.5rem;
     }
 
-    .section {
-        padding: 72px 0;
+    .countdown-label {
+        font-size: 0.6rem;
+        letter-spacing: 1.5px;
     }
 
-    .speakers-grid {
-        grid-template-columns: 1fr;
+    .countdown-separator {
+        font-size: 1.1rem;
+        padding-bottom: 14px;
+    }
+
+    .hero-cta {
+        padding: 15px 30px;
+        font-size: 0.9rem;
+        width: calc(100% - 32px);
+        max-width: 320px;
+        justify-content: center;
+    }
+
+    .hero-scroll-indicator {
+        display: none;
+    }
+
+    /* --- About --- */
+    .about-main {
+        padding: 28px 24px;
+        border-radius: 12px;
+    }
+
+    .about-main h3 {
+        font-size: 1.25rem;
+    }
+
+    .about-main p {
+        font-size: 0.92rem;
+    }
+
+    .about-features {
         gap: 16px;
     }
 
+    .about-feature {
+        padding: 20px 18px;
+        gap: 16px;
+    }
+
+    .feature-icon {
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
+    }
+
+    .feature-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* --- Speakers --- */
+    .speakers-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
     .speaker-card {
-        padding: 24px 20px;
+        padding: 20px 18px;
         display: flex;
         align-items: center;
         text-align: left;
-        gap: 20px;
+        gap: 18px;
     }
 
     .speaker-avatar {
-        width: 68px;
-        height: 68px;
+        width: 64px;
+        height: 64px;
+        min-width: 64px;
         margin: 0;
     }
 
     .speaker-initials {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
     }
 
+    .speaker-name {
+        font-size: 1rem;
+        margin-bottom: 4px;
+    }
+
+    .speaker-role,
+    .speaker-company {
+        font-size: 0.78rem;
+    }
+
+    /* --- Timeline --- */
     .timeline::before {
-        left: 20px;
+        left: 18px;
     }
 
     .timeline-time {
@@ -1425,13 +1594,30 @@ ul {
     }
 
     .timeline-item {
-        padding-left: 48px;
+        padding-left: 46px;
+        padding-bottom: 24px;
         gap: 0;
     }
 
     .timeline-dot {
         position: absolute;
-        left: 13px;
+        left: 11px;
+        width: 12px;
+        height: 12px;
+        min-width: 12px;
+    }
+
+    .timeline-content {
+        padding: 18px 20px;
+        border-radius: 10px;
+    }
+
+    .timeline-content h3 {
+        font-size: 0.98rem;
+    }
+
+    .timeline-content p {
+        font-size: 0.85rem;
     }
 
     .timeline-content::before {
@@ -1440,49 +1626,118 @@ ul {
         font-family: var(--font-display);
         font-weight: 700;
         color: var(--navy);
-        font-size: 0.95rem;
+        font-size: 0.88rem;
+        letter-spacing: 0.5px;
         margin-bottom: 6px;
     }
 
+    .timeline-content:hover {
+        transform: none;
+    }
+
+    .timeline-speaker {
+        font-size: 0.72rem;
+        margin-top: 8px;
+    }
+
+    /* --- Location --- */
+    .location-info h3 {
+        font-size: 1.4rem;
+        margin-bottom: 18px;
+    }
+
+    .location-address {
+        margin-bottom: 18px;
+        gap: 12px;
+    }
+
+    .location-details {
+        gap: 10px;
+        margin-bottom: 24px;
+    }
+
+    .location-detail {
+        font-size: 0.88rem;
+    }
+
+    .location-map {
+        height: 260px;
+        border-radius: 10px;
+    }
+
+    .location-map-link {
+        padding: 11px 20px;
+        font-size: 0.82rem;
+    }
+
+    /* --- Form --- */
     .accreditation-form {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .form-row {
         display: flex;
         flex-direction: column;
-        gap: 18px;
+        gap: 16px;
         grid-column: 1 / -1;
+    }
+
+    .form-group label {
+        font-size: 0.8rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 13px 14px;
+        font-size: 16px; /* avoid iOS zoom on focus */
+    }
+
+    .checkbox-label {
+        font-size: 0.82rem !important;
+        gap: 10px;
     }
 
     .btn-submit {
         min-width: unset;
         width: 100%;
-        padding: 15px 28px;
+        padding: 16px 24px;
+        font-size: 0.92rem;
     }
 
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
+    .form-success {
+        padding: 44px 24px;
     }
 
-    .footer-bottom {
-        flex-direction: column;
-        gap: 6px;
-        text-align: center;
+    .form-success h3 {
+        font-size: 1.5rem;
     }
+
+    .form-success p {
+        font-size: 0.95rem;
+    }
+
+    /* --- Partners --- */
+    .section-partners::before,
+    .section-partners::after {
+        width: 80px;
+    }
+
+    .section-partners::before { top: 28px; }
+    .section-partners::after  { bottom: 28px; }
 
     .partners-stage {
         gap: 48px;
     }
 
     .partners-row {
-        gap: 28px;
+        gap: 26px;
     }
 
     .partners-logos {
         flex-direction: column;
-        gap: 36px;
+        gap: 32px;
     }
 
     .partner-sep {
@@ -1497,41 +1752,219 @@ ul {
     }
 
     .partner-brand-img-lg {
-        max-width: 280px;
-        max-height: 90px;
+        max-width: 260px;
+        max-height: 86px;
     }
 
     .partner-brand-img-advant {
-        max-width: 280px;
-        max-height: 110px;
+        max-width: 260px;
+        max-height: 100px;
     }
 
     .label-text {
-        font-size: 0.65rem;
-        letter-spacing: 2.5px;
+        font-size: 0.64rem;
+        letter-spacing: 2.2px;
+    }
+
+    .partners-label {
+        gap: 14px;
+    }
+
+    /* --- Footer --- */
+    .footer {
+        padding: 48px 0 24px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-bottom: 32px;
+    }
+
+    .footer-col h4 {
+        margin-bottom: 10px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+        font-size: 0.72rem;
     }
 }
 
+/* Small smartphones */
 @media (max-width: 480px) {
-    .hero-title-line {
-        font-size: 2.3rem;
+    .container {
+        padding: 0 16px;
     }
 
-    .hero-cta {
-        padding: 14px 28px;
-        font-size: 0.88rem;
+    .section {
+        padding: 56px 0;
+    }
+
+    .section-header {
+        margin-bottom: 36px;
+    }
+
+    .section-title {
+        font-size: 1.55rem;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    .logo-divider {
+        display: none;
+    }
+
+    .hero-content {
+        padding: 84px 0 48px;
+    }
+
+    .hero-badge {
+        font-size: 0.66rem;
+        padding: 6px 14px;
+        margin-bottom: 22px;
+    }
+
+    .hero-title-line {
+        font-size: 2.6rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.98rem;
+        margin-bottom: 28px;
+    }
+
+    .hero-info-item {
+        font-size: 0.85rem;
     }
 
     .countdown {
-        gap: 4px;
+        gap: 5px;
+        margin-bottom: 32px;
     }
 
     .countdown-item {
-        min-width: 56px;
-        padding: 10px;
+        min-width: 54px;
+        padding: 10px 6px;
     }
 
     .countdown-value {
         font-size: 1.3rem;
+    }
+
+    .countdown-separator {
+        font-size: 1rem;
+        padding-bottom: 12px;
+    }
+
+    .hero-cta {
+        padding: 14px 24px;
+        font-size: 0.85rem;
+    }
+
+    .about-main {
+        padding: 24px 20px;
+    }
+
+    .about-main h3 {
+        font-size: 1.15rem;
+    }
+
+    .about-feature {
+        padding: 18px 16px;
+    }
+
+    .speaker-card {
+        padding: 18px 16px;
+        gap: 14px;
+    }
+
+    .speaker-avatar {
+        width: 58px;
+        height: 58px;
+        min-width: 58px;
+    }
+
+    .timeline::before {
+        left: 14px;
+    }
+
+    .timeline-item {
+        padding-left: 38px;
+    }
+
+    .timeline-dot {
+        left: 8px;
+    }
+
+    .timeline-content {
+        padding: 16px 18px;
+    }
+
+    .location-map {
+        height: 220px;
+    }
+
+    .partner-brand-img {
+        max-width: 180px;
+        max-height: 64px;
+    }
+
+    .partner-brand-img-lg {
+        max-width: 240px;
+        max-height: 80px;
+    }
+
+    .partner-brand-img-advant {
+        max-width: 240px;
+        max-height: 92px;
+    }
+
+    .label-text {
+        font-size: 0.6rem;
+        letter-spacing: 1.8px;
+    }
+}
+
+/* Very small smartphones (iPhone SE, etc) */
+@media (max-width: 360px) {
+    html {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 0 14px;
+    }
+
+    .hero-title-line {
+        font-size: 2.25rem;
+    }
+
+    .countdown-item {
+        min-width: 48px;
+        padding: 8px 4px;
+    }
+
+    .countdown-value {
+        font-size: 1.15rem;
+    }
+
+    .countdown-label {
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+    }
+
+    .countdown-separator {
+        font-size: 0.9rem;
+    }
+
+    .partner-brand-img,
+    .partner-brand-img-lg,
+    .partner-brand-img-advant {
+        max-width: 200px;
     }
 }
