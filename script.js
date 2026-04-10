@@ -1,5 +1,5 @@
 /**
- * Next Generation Business - Landing Page Scripts
+ * Next Generation Business – Landing Page
  * Countdown, form validation, scroll animations, navigation
  */
 
@@ -40,14 +40,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // COUNTDOWN TIMER
     // ========================
     const eventDate = new Date('2026-04-29T14:00:00+02:00').getTime();
+    const countdownEl = document.getElementById('countdown');
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
 
     function updateCountdown() {
         const now = new Date().getTime();
         const distance = eventDate - now;
 
         if (distance < 0) {
-            document.getElementById('countdown').innerHTML =
-                '<p style="color: var(--gold); font-size: 1.2rem; font-weight: 600;">L\'evento è in corso!</p>';
+            countdownEl.innerHTML =
+                '<p style="color: var(--gold); font-size: 1.1rem; font-weight: 600; letter-spacing: 1px;">L\'evento è in corso</p>';
             return;
         }
 
@@ -56,10 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        document.getElementById('days').textContent = String(days).padStart(2, '0');
-        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+        if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+        if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+        if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
     }
 
     updateCountdown();
@@ -70,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================
     const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        rootMargin: '0px 0px -40px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -82,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Apply fade-in to various elements
     const animateElements = document.querySelectorAll(
         '.about-card, .about-feature, .speaker-card, .timeline-item, ' +
         '.location-info, .location-map, .partner-category, .form-wrapper'
@@ -90,42 +94,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animateElements.forEach((el, index) => {
         el.classList.add('fade-in');
-        el.style.transitionDelay = `${index % 4 * 0.1}s`;
+        el.style.transitionDelay = `${(index % 4) * 0.08}s`;
         observer.observe(el);
     });
 
     // ========================
-    // HERO PARTICLES
+    // HERO BACKGROUND PARTICLES
+    // Subtle, slow-moving dots for a refined look
     // ========================
     const particlesContainer = document.getElementById('heroParticles');
     if (particlesContainer) {
-        for (let i = 0; i < 30; i++) {
-            const particle = document.createElement('div');
-            particle.style.cssText = `
-                position: absolute;
-                width: ${Math.random() * 4 + 1}px;
-                height: ${Math.random() * 4 + 1}px;
-                background: rgba(201, 168, 76, ${Math.random() * 0.3 + 0.1});
-                border-radius: 50%;
-                left: ${Math.random() * 100}%;
-                top: ${Math.random() * 100}%;
-                animation: particleFloat ${Math.random() * 10 + 10}s linear infinite;
-                animation-delay: ${Math.random() * -20}s;
-            `;
-            particlesContainer.appendChild(particle);
-        }
-
-        // Add particle animation style
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes particleFloat {
-                0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-                10% { opacity: 1; }
-                90% { opacity: 1; }
-                100% { transform: translate(${Math.random() > 0.5 ? '' : '-'}${Math.random() * 200 + 50}px, -${Math.random() * 400 + 200}px) rotate(360deg); opacity: 0; }
+            @keyframes particleDrift {
+                0%   { transform: translateY(0) translateX(0); opacity: 0; }
+                15%  { opacity: 0.6; }
+                85%  { opacity: 0.6; }
+                100% { transform: translateY(-120px) translateX(30px); opacity: 0; }
             }
         `;
         document.head.appendChild(style);
+
+        for (let i = 0; i < 18; i++) {
+            const particle = document.createElement('div');
+            const size = Math.random() * 2.5 + 1;
+            particle.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                background: rgba(201, 168, 76, ${Math.random() * 0.15 + 0.05});
+                border-radius: 50%;
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                animation: particleDrift ${Math.random() * 15 + 20}s linear infinite;
+                animation-delay: ${Math.random() * -30}s;
+            `;
+            particlesContainer.appendChild(particle);
+        }
     }
 
     // ========================
@@ -136,8 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const formSuccess = document.getElementById('formSuccess');
 
     if (form) {
-        // Real-time validation on blur
         const requiredFields = form.querySelectorAll('[required]');
+
         requiredFields.forEach(field => {
             if (field.type !== 'checkbox') {
                 field.addEventListener('blur', () => validateField(field));
@@ -154,7 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let isValid = true;
 
-            // Validate all required fields
             requiredFields.forEach(field => {
                 if (!validateField(field)) {
                     isValid = false;
@@ -162,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!isValid) {
-                // Scroll to first error
                 const firstError = form.querySelector('.error');
                 if (firstError) {
                     firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -178,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btnLoading.style.display = 'inline-flex';
             submitBtn.disabled = true;
 
-            // Simulate form submission (replace with actual API call)
+            // Simulate form submission (replace with actual API endpoint)
             setTimeout(() => {
                 form.style.display = 'none';
                 formSuccess.style.display = 'block';
@@ -192,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (field.type === 'checkbox') {
             if (!field.checked) {
-                if (errorEl) errorEl.textContent = 'Questo campo è obbligatorio';
+                if (errorEl) errorEl.textContent = 'Campo obbligatorio';
                 return false;
             }
             if (errorEl) errorEl.textContent = '';
@@ -203,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!value) {
             field.classList.add('error');
-            if (errorEl) errorEl.textContent = 'Questo campo è obbligatorio';
+            if (errorEl) errorEl.textContent = 'Campo obbligatorio';
             return false;
         }
 
@@ -211,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(value)) {
                 field.classList.add('error');
-                if (errorEl) errorEl.textContent = 'Inserisci un indirizzo email valido';
+                if (errorEl) errorEl.textContent = 'Inserire un indirizzo email valido';
                 return false;
             }
         }
@@ -265,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', updateActiveNav);
 
-    // Set timeline data-time attributes for mobile
+    // Set timeline data-time attributes for mobile view
     document.querySelectorAll('.timeline-item').forEach(item => {
         const time = item.querySelector('.timeline-time');
         const content = item.querySelector('.timeline-content');
