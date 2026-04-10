@@ -6,20 +6,22 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ========================
-    // SMOOTH SCROLL (Lenis)
+    // SMOOTH SCROLL (Lenis) + SOFT SECTION SNAP
     // ========================
-    // Soft, graceful scrolling with a gentle easing curve.
-    // Intercepts wheel/keyboard; touch stays native for best mobile UX.
+    // Lenis handles buttery wheel/keyboard scrolling with a soft easing curve.
+    // A custom snap layer on top waits for the user to stop scrolling, then
+    // gently glides to the nearest section using the same easing — creating
+    // elegant "slide" transitions without the rigid jerk of native CSS snap.
     let lenis = null;
     if (typeof Lenis !== 'undefined') {
         lenis = new Lenis({
-            duration: 1.8,
+            duration: 1.6,
             // quart.out – morbido, decelera dolcemente senza mai scattare
             easing: (t) => 1 - Math.pow(1 - t, 4),
             smoothWheel: true,
-            wheelMultiplier: 0.75,
+            wheelMultiplier: 0.8,
             touchMultiplier: 1.6,
-            lerp: 0.055,
+            lerp: 0.06,
         });
 
         function raf(time) {
@@ -29,12 +31,71 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(raf);
 
         // Ricalcola l'altezza totale della pagina dopo che tutto è stato renderizzato
-        // (immagini, iframe della mappa, font caricati, ecc.)
         const resizeLenis = () => lenis && lenis.resize();
         window.addEventListener('load', () => setTimeout(resizeLenis, 150));
         if (document.fonts && document.fonts.ready) {
             document.fonts.ready.then(() => setTimeout(resizeLenis, 100));
         }
+
+        // --- Soft section snap ---
+        const snapTargets = Array.from(
+            document.querySelectorAll('.hero, .section')
+        );
+        const footerEl = document.querySelector('.footer');
+        if (footerEl) snapTargets.push(footerEl);
+
+        const SNAP_DELAY = 160;    // ms to wait after scroll stops
+        const SNAP_DURATION = 1.5; // seconds for the easing glide
+        let snapTimer = null;
+        let isSnapping = false;
+        let prevScroll = 0;
+
+        const softEasing = (t) => 1 - Math.pow(1 - t, 4);
+
+        const snapToNearest = () => {
+            if (!lenis || isSnapping) return;
+
+            const currentScroll = lenis.scroll;
+            const maxScroll = lenis.limit;
+
+            // Allow the user to rest at the very bottom of the document
+            if (currentScroll >= maxScroll - 6) return;
+
+            // Find the closest snap target (clamped to max scroll so that
+            // the footer, which may sit beyond maxScroll, still snaps nicely)
+            let targetScroll = null;
+            let closestDistance = Infinity;
+
+            for (const el of snapTargets) {
+                const scrollFor = Math.min(el.offsetTop, maxScroll);
+                const distance = Math.abs(scrollFor - currentScroll);
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    targetScroll = scrollFor;
+                }
+            }
+
+            if (targetScroll === null || closestDistance < 5) return;
+
+            isSnapping = true;
+            lenis.scrollTo(targetScroll, {
+                duration: SNAP_DURATION,
+                easing: softEasing,
+                lock: true,
+                onComplete: () => {
+                    // small grace window so residual scroll events don't retrigger snap
+                    setTimeout(() => { isSnapping = false; }, 80);
+                },
+            });
+        };
+
+        lenis.on('scroll', ({ scroll }) => {
+            if (isSnapping) { prevScroll = scroll; return; }
+            // Reset debounce each time scroll updates; fires once user stops
+            clearTimeout(snapTimer);
+            snapTimer = setTimeout(snapToNearest, SNAP_DELAY);
+            prevScroll = scroll;
+        });
 
         window.lenis = lenis;
     }
