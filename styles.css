@@ -614,74 +614,94 @@ ul {
 /* === Speakers Section === */
 .speakers-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 28px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
 }
 
 .speaker-card {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.04);
+    text-align: left;
+    background: rgba(255, 255, 255, 0.035);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-lg);
-    padding: 36px 20px;
+    padding: 30px 26px;
     transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.speaker-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 26px;
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.4s ease;
 }
 
 .speaker-card:hover {
-    transform: translateY(-6px);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.18);
     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
 }
 
-.speaker-avatar {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    background: var(--white);
+.speaker-card:hover::before {
+    width: 64px;
+}
+
+.speaker-info {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    border: 2px solid rgba(255, 255, 255, 0.15);
-}
-
-.speaker-avatar::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(255, 255, 255, 0.25);
-}
-
-.speaker-initials {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--navy);
-    letter-spacing: 1px;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .speaker-name {
     font-family: var(--font-display);
-    font-size: 1.1rem;
+    font-size: 1.18rem;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+    margin-top: 8px;
     color: var(--white);
+    line-height: 1.25;
+    letter-spacing: -0.2px;
 }
 
 .speaker-role {
     font-size: 0.82rem;
-    color: rgba(255, 255, 255, 0.75);
-    font-weight: 500;
-    margin-bottom: 4px;
+    color: rgba(255, 255, 255, 0.88);
+    font-weight: 600;
+    letter-spacing: 0.1px;
 }
 
 .speaker-company {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.48);
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+.speaker-divider {
+    width: 32px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 18px 0 14px;
+}
+
+.speaker-bio {
     font-size: 0.82rem;
-    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.68;
+    color: rgba(255, 255, 255, 0.68);
     font-weight: 400;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
 }
 
 /* === Timeline / Program === */
@@ -771,6 +791,7 @@ ul {
     align-items: center;
     gap: 6px;
     margin-top: 10px;
+    margin-right: 6px;
     font-size: 0.78rem;
     font-weight: 600;
     color: var(--navy);
@@ -1314,6 +1335,7 @@ ul {
 @media (max-width: 1024px) {
     .speakers-grid {
         grid-template-columns: repeat(2, 1fr);
+        max-width: 720px;
     }
 
     .about-grid {
@@ -1555,32 +1577,33 @@ ul {
     }
 
     .speaker-card {
-        padding: 20px 18px;
-        display: flex;
-        align-items: center;
-        text-align: left;
-        gap: 18px;
+        padding: 24px 22px;
     }
 
-    .speaker-avatar {
-        width: 64px;
-        height: 64px;
-        min-width: 64px;
-        margin: 0;
-    }
-
-    .speaker-initials {
-        font-size: 1.15rem;
+    .speaker-card::before {
+        left: 22px;
+        width: 32px;
     }
 
     .speaker-name {
-        font-size: 1rem;
-        margin-bottom: 4px;
+        font-size: 1.05rem;
     }
 
-    .speaker-role,
-    .speaker-company {
+    .speaker-role {
         font-size: 0.78rem;
+    }
+
+    .speaker-company {
+        font-size: 0.66rem;
+    }
+
+    .speaker-bio {
+        font-size: 0.78rem;
+        line-height: 1.65;
+    }
+
+    .speaker-divider {
+        margin: 14px 0 12px;
     }
 
     /* --- Timeline --- */
@@ -1878,14 +1901,11 @@ ul {
     }
 
     .speaker-card {
-        padding: 18px 16px;
-        gap: 14px;
+        padding: 22px 20px;
     }
 
-    .speaker-avatar {
-        width: 58px;
-        height: 58px;
-        min-width: 58px;
+    .speaker-card::before {
+        left: 20px;
     }
 
     .timeline::before {
