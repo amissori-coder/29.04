@@ -8,17 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================
     // SMOOTH SCROLL (Lenis)
     // ========================
-    // Buttery-smooth scrolling with custom easing.
-    // Intercepts wheel/keyboard for elegant interpolation; touch stays native.
+    // Soft, graceful scrolling with a gentle easing curve.
+    // Intercepts wheel/keyboard; touch stays native for best mobile UX.
     let lenis = null;
     if (typeof Lenis !== 'undefined') {
         lenis = new Lenis({
-            duration: 1.35,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            duration: 1.8,
+            // quart.out – morbido, decelera dolcemente senza mai scattare
+            easing: (t) => 1 - Math.pow(1 - t, 4),
             smoothWheel: true,
-            wheelMultiplier: 0.9,
-            touchMultiplier: 1.8,
-            lerp: 0.08,
+            wheelMultiplier: 0.75,
+            touchMultiplier: 1.6,
+            lerp: 0.055,
         });
 
         function raf(time) {
@@ -26,6 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
             requestAnimationFrame(raf);
         }
         requestAnimationFrame(raf);
+
+        // Ricalcola l'altezza totale della pagina dopo che tutto è stato renderizzato
+        // (immagini, iframe della mappa, font caricati, ecc.)
+        const resizeLenis = () => lenis && lenis.resize();
+        window.addEventListener('load', () => setTimeout(resizeLenis, 150));
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(() => setTimeout(resizeLenis, 100));
+        }
 
         window.lenis = lenis;
     }
@@ -264,8 +273,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (lenis) {
                 lenis.scrollTo(target, {
                     offset: -70,
-                    duration: 1.6,
-                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    duration: 2.0,
+                    easing: (t) => 1 - Math.pow(1 - t, 4),
                 });
             } else {
                 const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 70;

@@ -52,11 +52,14 @@
 html {
     scroll-behavior: auto;
     font-size: 16px;
+    overflow-x: clip;
 }
 
-/* Lenis smooth scroll classes */
-html.lenis, html.lenis body {
+/* Lenis smooth scroll helper classes */
+html.lenis,
+html.lenis body {
     height: auto;
+    min-height: auto;
 }
 
 .lenis.lenis-smooth {
@@ -76,7 +79,7 @@ body {
     color: var(--text-dark);
     line-height: 1.7;
     background: var(--white);
-    overflow-x: hidden;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
