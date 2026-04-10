@@ -1,14 +1,15 @@
 /* ============================================
    NEXT GENERATION BUSINESS - Landing Page
-   Institutional & Formal Design
+   Brand Identity: Revilaw + Advant Nctm
    Color Palette:
-   - Navy Dark:  #0F1C3F
-   - Navy:       #1B2A4A
-   - Navy Light: #2A3F6A
-   - Gold:       #C9A84C
-   - Gold Light: #E8D5A0
-   - White:      #FFFFFF
-   - Light Gray: #F5F6FA
+   - Primary Navy (Revilaw/Unindustria): #164068
+   - Primary Dark:                       #0A2844
+   - Primary Light:                      #2A5A85
+   - Accent Red (Advant):                #B1213B
+   - Accent Red Dark:                    #8E1A30
+   - Nctm Gray:                          #6E6E6E
+   - White:                              #FFFFFF
+   - Light Gray:                         #F5F6F8
    ============================================ */
 
 /* === Reset & Base === */
@@ -21,29 +22,31 @@
 }
 
 :root {
-    --navy-dark: #0F1C3F;
-    --navy: #1B2A4A;
-    --navy-light: #2A3F6A;
-    --gold: #C9A84C;
-    --gold-light: #E8D5A0;
-    --gold-glow: rgba(201, 168, 76, 0.3);
+    --navy-dark: #0A2844;
+    --navy: #164068;
+    --navy-light: #2A5A85;
+    --accent: #B1213B;
+    --accent-dark: #8E1A30;
+    --accent-light: #D63A55;
+    --accent-glow: rgba(177, 33, 59, 0.25);
+    --nctm-gray: #6E6E6E;
     --white: #FFFFFF;
-    --light-gray: #F5F6FA;
-    --medium-gray: #E0E3EB;
-    --text-dark: #1a1a2e;
+    --light-gray: #F5F6F8;
+    --medium-gray: #DFE2E8;
+    --text-dark: #1A2332;
     --text-muted: #5A6270;
     --danger: #C53030;
     --success: #2F855A;
-    --font-display: 'Playfair Display', Georgia, serif;
+    --font-display: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-    --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
-    --shadow-xl: 0 16px 48px rgba(0,0,0,0.16);
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 14px;
+    --shadow-sm: 0 1px 3px rgba(10, 40, 68, 0.06);
+    --shadow-md: 0 4px 16px rgba(10, 40, 68, 0.08);
+    --shadow-lg: 0 8px 32px rgba(10, 40, 68, 0.12);
+    --shadow-xl: 0 16px 48px rgba(10, 40, 68, 0.16);
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
 }
 
 html {
@@ -115,12 +118,20 @@ ul {
     color: var(--white);
 }
 
-.logo-ngb {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 1.4rem;
-    color: var(--gold);
-    letter-spacing: 2px;
+.logo-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    color: var(--navy);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo-mark svg {
+    display: block;
 }
 
 .logo-divider {
@@ -158,7 +169,7 @@ ul {
     left: 0;
     width: 0;
     height: 1.5px;
-    background: var(--gold);
+    background: var(--accent);
     transition: width 0.3s ease;
 }
 
@@ -167,12 +178,12 @@ ul {
 }
 
 .nav-menu a:not(.nav-cta):hover {
-    color: var(--gold-light);
+    color: var(--accent-light);
 }
 
 .nav-cta {
-    background: var(--gold);
-    color: var(--navy-dark) !important;
+    background: var(--accent);
+    color: var(--white) !important;
     padding: 10px 22px;
     border-radius: var(--radius-sm);
     font-weight: 600;
@@ -182,9 +193,9 @@ ul {
 }
 
 .nav-cta:hover {
-    background: var(--gold-light);
+    background: var(--accent-dark);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px var(--gold-glow);
+    box-shadow: 0 4px 12px var(--accent-glow);
 }
 
 .nav-toggle {
@@ -233,7 +244,7 @@ ul {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 50%, rgba(177, 33, 59, 0.05) 0%, transparent 50%),
         radial-gradient(ellipse at 80% 20%, rgba(42, 63, 106, 0.3) 0%, transparent 50%),
         radial-gradient(ellipse at 50% 80%, rgba(15, 28, 63, 0.5) 0%, transparent 50%);
 }
@@ -255,9 +266,9 @@ ul {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(201, 168, 76, 0.12);
-    border: 1px solid rgba(201, 168, 76, 0.25);
-    color: var(--gold);
+    background: rgba(177, 33, 59, 0.12);
+    border: 1px solid rgba(177, 33, 59, 0.25);
+    color: var(--accent);
     padding: 8px 20px;
     border-radius: var(--radius-sm);
     font-size: 0.78rem;
@@ -271,7 +282,7 @@ ul {
 .badge-dot {
     width: 7px;
     height: 7px;
-    background: var(--gold);
+    background: var(--accent);
     border-radius: 50%;
     animation: pulse 2.5s ease-in-out infinite;
 }
@@ -299,7 +310,7 @@ ul {
 .hero-title-line:nth-child(3) { animation-delay: 0.3s; }
 
 .hero-title-line.accent {
-    color: var(--gold);
+    color: var(--accent);
 }
 
 .hero-subtitle {
@@ -335,7 +346,7 @@ ul {
 }
 
 .hero-info-item svg {
-    color: var(--gold);
+    color: var(--accent);
     flex-shrink: 0;
 }
 
@@ -365,7 +376,7 @@ ul {
     font-family: var(--font-display);
     font-size: 2rem;
     font-weight: 700;
-    color: var(--gold);
+    color: var(--accent);
     line-height: 1;
 }
 
@@ -388,8 +399,8 @@ ul {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    background: var(--gold);
-    color: var(--navy-dark);
+    background: var(--accent);
+    color: var(--white);
     padding: 16px 36px;
     border-radius: var(--radius-sm);
     font-size: 0.95rem;
@@ -398,14 +409,14 @@ ul {
     text-transform: uppercase;
     transition: all 0.4s ease;
     animation: fadeInUp 0.8s ease 0.9s both;
-    box-shadow: 0 4px 16px var(--gold-glow);
+    box-shadow: 0 4px 16px var(--accent-glow);
 }
 
 .hero-cta:hover {
-    background: var(--white);
-    color: var(--navy-dark);
+    background: var(--accent-dark);
+    color: var(--white);
     transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 28px rgba(177, 33, 59, 0.4);
 }
 
 .hero-cta svg {
@@ -476,7 +487,7 @@ ul {
     font-weight: 600;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--accent);
     margin-bottom: 14px;
 }
 
@@ -496,7 +507,7 @@ ul {
 .section-divider {
     width: 50px;
     height: 2px;
-    background: var(--gold);
+    background: var(--accent);
     margin: 0 auto;
 }
 
@@ -574,7 +585,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--gold);
+    color: var(--accent);
 }
 
 .about-feature h4 {
@@ -609,7 +620,7 @@ ul {
 .speaker-card:hover {
     transform: translateY(-6px);
     background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(201, 168, 76, 0.4);
+    border-color: rgba(177, 33, 59, 0.4);
     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
 }
 
@@ -618,26 +629,29 @@ ul {
     height: 96px;
     margin: 0 auto 20px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    background: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.15);
 }
 
 .speaker-avatar::before {
     content: '';
     position: absolute;
-    inset: -3px;
+    inset: -4px;
     border-radius: 50%;
-    border: 1.5px solid rgba(201, 168, 76, 0.25);
+    border: 1.5px solid var(--accent);
+    opacity: 0.5;
 }
 
 .speaker-initials {
     font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--navy-dark);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: 1px;
 }
 
 .speaker-name {
@@ -650,7 +664,7 @@ ul {
 
 .speaker-role {
     font-size: 0.82rem;
-    color: var(--gold);
+    color: var(--accent);
     font-weight: 500;
     margin-bottom: 4px;
 }
@@ -705,13 +719,13 @@ ul {
     width: 14px;
     height: 14px;
     min-width: 14px;
-    background: var(--gold);
+    background: var(--accent);
     border-radius: 50%;
     border: 3px solid var(--light-gray);
     position: relative;
     z-index: 1;
     margin-top: 7px;
-    box-shadow: 0 0 0 3px var(--gold-glow);
+    box-shadow: 0 0 0 3px var(--accent-glow);
 }
 
 .timeline-content {
@@ -750,11 +764,11 @@ ul {
     margin-top: 10px;
     font-size: 0.78rem;
     font-weight: 600;
-    color: var(--gold);
-    background: rgba(201, 168, 76, 0.08);
+    color: var(--accent);
+    background: rgba(177, 33, 59, 0.06);
     padding: 4px 12px;
     border-radius: var(--radius-sm);
-    border: 1px solid rgba(201, 168, 76, 0.15);
+    border: 1px solid rgba(177, 33, 59, 0.2);
 }
 
 /* === Location Section === */
@@ -781,7 +795,7 @@ ul {
 }
 
 .location-address svg {
-    color: var(--gold);
+    color: var(--accent);
     flex-shrink: 0;
     margin-top: 2px;
 }
@@ -806,7 +820,7 @@ ul {
 }
 
 .location-detail svg {
-    color: var(--gold);
+    color: var(--accent);
     flex-shrink: 0;
 }
 
@@ -814,9 +828,9 @@ ul {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(201, 168, 76, 0.12);
-    border: 1px solid rgba(201, 168, 76, 0.25);
-    color: var(--gold);
+    background: rgba(177, 33, 59, 0.12);
+    border: 1px solid rgba(177, 33, 59, 0.25);
+    color: var(--accent);
     padding: 12px 24px;
     border-radius: var(--radius-sm);
     font-weight: 600;
@@ -825,9 +839,9 @@ ul {
 }
 
 .location-map-link:hover {
-    background: var(--gold);
-    color: var(--navy-dark);
-    border-color: var(--gold);
+    background: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
 }
 
 .location-map {
@@ -911,9 +925,9 @@ ul {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    border-color: var(--gold);
+    border-color: var(--accent);
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 0 2px var(--gold-glow);
+    box-shadow: 0 0 0 2px var(--accent-glow);
 }
 
 .form-group input.error,
@@ -960,15 +974,15 @@ ul {
 }
 
 .checkbox-label input[type="checkbox"]:checked + .checkmark {
-    background: var(--gold);
-    border-color: var(--gold);
+    background: var(--accent);
+    border-color: var(--accent);
 }
 
 .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
     content: '';
     width: 5px;
     height: 9px;
-    border: 2px solid var(--navy-dark);
+    border: 2px solid var(--white);
     border-top: none;
     border-left: none;
     transform: rotate(45deg) translate(-1px, -1px);
@@ -985,8 +999,8 @@ ul {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background: var(--gold);
-    color: var(--navy-dark);
+    background: var(--accent);
+    color: var(--white);
     border: none;
     padding: 16px 44px;
     border-radius: var(--radius-sm);
@@ -998,13 +1012,13 @@ ul {
     cursor: pointer;
     transition: all 0.4s ease;
     min-width: 320px;
-    box-shadow: 0 4px 16px var(--gold-glow);
+    box-shadow: 0 4px 16px var(--accent-glow);
 }
 
 .btn-submit:hover {
-    background: var(--white);
+    background: var(--accent-dark);
     transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 28px rgba(177, 33, 59, 0.4);
 }
 
 .btn-submit:disabled {
@@ -1056,7 +1070,7 @@ ul {
 
 .form-success .success-detail {
     margin-top: 24px;
-    color: var(--gold);
+    color: var(--accent);
     font-weight: 600;
 }
 
@@ -1083,12 +1097,13 @@ ul {
 .partner-logos {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 24px;
     flex-wrap: wrap;
+    align-items: stretch;
 }
 
 .partner-logo {
-    padding: 22px 30px;
+    padding: 28px 36px;
     background: var(--white);
     border-radius: var(--radius-md);
     border: 1px solid var(--medium-gray);
@@ -1096,33 +1111,151 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 120px;
+    min-width: 220px;
 }
 
 .partner-logo:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
-    border-color: var(--gold);
+    border-color: var(--navy);
 }
 
-.partner-logo-placeholder {
+.partner-logo-text-group {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3px;
+    gap: 4px;
 }
 
-.partner-logo-text {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-weight: 700;
+/* --- Revilaw Logo --- */
+.partner-logo-revilaw {
+    gap: 14px;
+}
+
+.revilaw-mark {
     color: var(--navy);
+    flex-shrink: 0;
 }
 
-.partner-logo-sub {
-    font-size: 0.72rem;
-    color: var(--text-muted);
+.brand-revilaw {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: 1.5px;
+    line-height: 1;
+}
+
+.brand-revilaw-sub {
+    font-size: 0.68rem;
+    color: var(--nctm-gray);
     font-weight: 500;
     letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* --- Advant Nctm Logo --- */
+.partner-logo-advant-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-advant {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.brand-nctm {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--nctm-gray);
+    letter-spacing: 0.5px;
+    line-height: 1;
+}
+
+/* --- Il Sole 24 Ore Logo --- */
+.partner-logo-sole {
+    background: var(--navy-dark);
+    border-color: var(--navy-dark);
+}
+
+.brand-sole-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.brand-sole {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--white);
+    font-style: italic;
+    letter-spacing: 0.5px;
+}
+
+/* --- Unindustria Logo --- */
+.partner-logo-unindustria {
+    flex-direction: column;
+    gap: 6px;
+    padding: 24px 32px;
+    min-width: 280px;
+}
+
+.brand-unindustria-prefix {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--navy);
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.brand-unindustria-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.unindustria-mark {
+    color: var(--navy);
+    flex-shrink: 0;
+}
+
+.brand-unindustria {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.brand-unindustria-sub {
+    font-size: 0.66rem;
+    color: var(--navy);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+.brand-unindustria-cities {
+    font-size: 0.62rem;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 /* === Footer === */
@@ -1166,12 +1299,12 @@ ul {
 }
 
 .footer ul li svg {
-    color: var(--gold);
+    color: var(--accent);
     flex-shrink: 0;
 }
 
 .footer a:hover {
-    color: var(--gold);
+    color: var(--accent);
 }
 
 .footer-bottom {
@@ -1185,11 +1318,11 @@ ul {
 }
 
 .footer-bottom a {
-    color: var(--gold);
+    color: var(--accent);
 }
 
 .footer-bottom a:hover {
-    color: var(--gold-light);
+    color: var(--accent-light);
 }
 
 /* === Animations === */
@@ -1355,7 +1488,7 @@ ul {
         display: block;
         font-family: var(--font-display);
         font-weight: 700;
-        color: var(--gold);
+        color: var(--accent);
         font-size: 0.95rem;
         margin-bottom: 6px;
     }

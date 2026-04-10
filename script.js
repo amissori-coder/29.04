@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (distance < 0) {
             countdownEl.innerHTML =
-                '<p style="color: var(--gold); font-size: 1.1rem; font-weight: 600; letter-spacing: 1px;">L\'evento è in corso</p>';
+                '<p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; letter-spacing: 1px;">L\'evento è in corso</p>';
             return;
         }
 
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 position: absolute;
                 width: ${size}px;
                 height: ${size}px;
-                background: rgba(201, 168, 76, ${Math.random() * 0.15 + 0.05});
+                background: rgba(255, 255, 255, ${Math.random() * 0.15 + 0.05});
                 border-radius: 50%;
                 left: ${Math.random() * 100}%;
                 top: ${Math.random() * 100}%;
