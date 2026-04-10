@@ -541,17 +541,12 @@ ul {
 }
 
 .section-description {
-    max-width: 580px;
+    max-width: 620px;
     margin: 20px auto 0;
     color: rgba(255, 255, 255, 0.65);
     font-size: 1rem;
     line-height: 1.7;
-    text-align: justify;
-    text-justify: inter-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
-    word-spacing: -0.02em;
+    text-align: center;
 }
 
 /* === About Section === */
@@ -932,22 +927,23 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 28px 36px;
+    gap: 18px 40px;
     list-style: none;
     padding: 0;
-    margin: 0 auto 44px;
-    max-width: 760px;
+    margin: 0 auto 40px;
+    max-width: 700px;
     flex-wrap: wrap;
 }
 
 .form-benefits-strip li {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     font-size: 0.82rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.72);
     letter-spacing: 0.2px;
+    white-space: nowrap;
 }
 
 .form-benefits-strip li svg {
