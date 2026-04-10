@@ -6,6 +6,31 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ========================
+    // SMOOTH SCROLL (Lenis)
+    // ========================
+    // Buttery-smooth scrolling with custom easing.
+    // Intercepts wheel/keyboard for elegant interpolation; touch stays native.
+    let lenis = null;
+    if (typeof Lenis !== 'undefined') {
+        lenis = new Lenis({
+            duration: 1.35,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true,
+            wheelMultiplier: 0.9,
+            touchMultiplier: 1.8,
+            lerp: 0.08,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        window.lenis = lenis;
+    }
+
+    // ========================
     // NAVBAR SCROLL BEHAVIOR
     // ========================
     const navbar = document.getElementById('navbar');
@@ -229,10 +254,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (!href || href === '#') return;
+            const target = document.querySelector(href);
+            if (!target) return;
+
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 80;
+
+            if (lenis) {
+                lenis.scrollTo(target, {
+                    offset: -70,
+                    duration: 1.6,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                });
+            } else {
+                const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 70;
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
