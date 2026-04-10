@@ -4,10 +4,11 @@ Salvare in questa cartella i seguenti file immagine (PNG con sfondo trasparente 
 
 | File atteso             | Contenuto                                                       |
 |-------------------------|-----------------------------------------------------------------|
-| `logo-revilaw.png`      | Logo Revilaw (marchio "R" in blu navy su sfondo bianco/chiaro) |
+| `logo-revilaw.png`      | Logo Revilaw completo (R + wordmark in blu navy)               |
+| `logo-revilaw-mark.png` | Marchio "R" Revilaw in bianco, per la navbar scura             |
 | `logo-advant-nctm.png`  | Logo Advant Nctm (ADVANT in rosso + Nctm in grigio)            |
 | `logo-unindustria.png`  | Logo Unindustria "associato" con aquila                        |
-| `logo-revilaw-mark.png` | Solo il marchio "R" Revilaw, per la navbar (facoltativo)       |
+| `logo-sole24ore.png`    | Logo Gruppo Il Sole 24 Ore (media partner)                     |
 
 ## Formati e dimensioni consigliate
 
