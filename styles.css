@@ -119,13 +119,11 @@ ul {
 }
 
 .logo-mark-img {
-    width: 36px;
-    height: 36px;
+    height: 38px;
+    width: auto;
     object-fit: contain;
-    background: var(--white);
-    border-radius: var(--radius-sm);
-    padding: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    display: block;
+    flex-shrink: 0;
 }
 
 .logo-divider {
