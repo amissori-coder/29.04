@@ -21,13 +21,13 @@ nextgen_root/
 Far sì che la root del repository `LandingVerona` contenga:
 
 ```
-CNAME                        ← già presente, NON toccare
-README.md                    ← già presente
-index.html                   ← NUOVO (da nextgen_root/)
-styles.css                   ← NUOVO (da nextgen_root/)
-script.js                    ← NUOVO (da nextgen_root/)
-verona/                      ← già presente
-roma_aprile_2026/            ← già copiata
+CNAME                         ← già presente, NON toccare
+README.md                     ← già presente
+index.html                    ← NUOVO (da nextgen_root/)
+styles.css                    ← NUOVO (da nextgen_root/)
+script.js                     ← NUOVO (da nextgen_root/)
+verona_marzo_2026/            ← già presente (evento di marzo)
+roma_aprile_2026/             ← già copiata
 ```
 
 ### Passi con GitHub Desktop
@@ -45,51 +45,29 @@ roma_aprile_2026/            ← già copiata
 Attendi 1-2 minuti e apri in **finestra in incognito**:
 
 - `https://nextgenerationbusiness.it/` → deve mostrare la **nuova landing** con le card Verona e Roma
-- `https://nextgenerationbusiness.it/verona/` → deve continuare a funzionare come prima
+- `https://nextgenerationbusiness.it/verona_marzo_2026/` → deve continuare a funzionare come prima
 - `https://nextgenerationbusiness.it/roma_aprile_2026/` → deve continuare a funzionare come prima
 
 ## ⚠️ Cose da verificare
 
-### 1. Link alla cartella Verona
+### 1. Giorno esatto dell'evento Verona
 
-Nel file `index.html` (linea ~94) c'è il link alla cartella Verona:
-
-```html
-<a href="verona/" class="event-card event-past">
-```
-
-Il link presuppone che la cartella si chiami **`verona/`** (tutto minuscolo). Se nel repository principale la cartella si chiama ancora `Verona/` con la V maiuscola, **modifica il link** in:
+La card Verona mostra `Marzo 2026` come periodo. Se conosci il **giorno esatto** dell'evento di Verona, apri `index.html` e sostituisci il trattino lungo con il numero del giorno:
 
 ```html
-<a href="Verona/" class="event-card event-past">
+<span class="event-day">&mdash;</span>    ← sostituisci — con il giorno (es. 12)
 ```
 
-### 2. Placeholder Verona da personalizzare
+### 2. Titolo e descrizione Verona
 
-La card Verona ha dei testi generici che andranno personalizzati con i dati reali dell'evento che si è tenuto a Verona. Nel file `index.html` cerca questa sezione:
+Il titolo e la descrizione dell'evento Verona sono placeholder generici. Se vuoi personalizzarli cerca in `index.html`:
 
 ```html
-<!-- Verona — edizione precedente -->
-<a href="verona/" class="event-card event-past">
-    <span class="event-badge">Edizione Precedente</span>
-    <div class="event-date">
-        <span class="event-day">—</span>
-        <div class="event-date-meta">
-            <span class="event-month">Verona</span>
-            <span class="event-year">1ª Edizione</span>
-        </div>
-    </div>
-    ...
-    <h3 class="event-title">Next Generation Business · Verona</h3>
-    <p class="event-excerpt">La prima tappa del ciclo di convegni, tenutasi a Verona. Rivedi i contenuti dell'edizione inaugurale.</p>
+<h3 class="event-title">Next Generation Business · Verona</h3>
+<p class="event-excerpt">La prima tappa del ciclo di convegni, tenutasi a Verona nel marzo 2026. Rivedi i contenuti dell'edizione inaugurale.</p>
 ```
 
-Sostituisci:
-- `—` con il giorno (es. `15`)
-- `Verona` con il mese (es. `Gennaio`)
-- `1ª Edizione` con l'anno (es. `2026`)
-- Il titolo con il titolo reale dell'evento di Verona
-- L'excerpt con una breve descrizione
+e sostituiscili con i dati reali del convegno.
 
 ### 3. Il file `CNAME` alla root
 
